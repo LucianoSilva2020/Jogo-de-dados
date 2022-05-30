@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Jogo de Dados - fase 3</title>
+        <style>
+            .topo {
+                width: 500; height: 60px; margin:auto; 
+                text-align: center;
+            }
+            .tabuleiro {
+                width: 500px; 
+                margin: auto;
+                text-align: center;
+                border: 2px solid black;
+                background-color: lightsteelblue;
+            }
+            #msg {
+                font-weight: bolder; margin: 15px;
+                border: 2px solid black; border-radius: 10px;
+                background-color: white;
+            }
+            .dados {
+                border: 1px solid black; border-radius: 10px;
+                margin: 20px; background-color: white;
+            }
+            img {
+                margin:5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="topo">
+            <h1>Jogo de Dados (F3: Botão)</h1>
+        </div>
+        <div class="tabuleiro">
+            <p>Clique aqui para sortear os dados: 
+                <button onclick="sortear()">Sortear</button></p>
+            <h3>Computador:</h3>
+            <div id="comp" class="dados">
+                <img src="dadoInterrog.png">
+                <img src="dadoInterrog.png">
+                <img src="dadoInterrog.png">
+            </div>
+            <h3>Jogador:</h3>
+            <div id="jog" class="dados">
+                <img src="dadoInterrog.png">
+                <img src="dadoInterrog.png">
+                <img src="dadoInterrog.png">
+            </div>
+            <br>
+            <p id="msg">Aqui vai aparecer mensagem informando quem venceu.</p>
+        </div>
+
+        <script>
+            var dadosComp = [];
+            var dadosJog = [];
+            
+            function sortear() {
+                for (var i=0; i < 3; i++) {
+                    // computador
+                    dadosComp[i] = Math.floor(Math.random() * 6) + 1;
+                    // Jogador
+                    dadosJog[i] = Math.floor(Math.random() * 6) + 1;
+                }
+                // colocar os dados sorteados na página
+                document.getElementById("comp").innerHTML = 
+                    "<img src='dado"+ dadosComp[0] +".png'>"+
+                    "<img src='dado"+ dadosComp[1] +".png'>"+
+                    "<img src='dado"+ dadosComp[2] +".png'>";
+                document.getElementById("jog").innerHTML = 
+                    "<img src='dado"+ dadosJog[0] +".png'>"+
+                    "<img src='dado"+ dadosJog[1] +".png'>"+
+                    "<img src='dado"+ dadosJog[2] +".png'>";
+            }
+        </script>
+    </body>
+</html>
